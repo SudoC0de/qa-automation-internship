@@ -22,8 +22,6 @@ class SecondaryListingsPage(Page):
     def verify_listings_for_sales(self) -> None:
         listings: list[WebElement] = self.find_elements(self.elements['ListingCards'])
         for_sale_listings: list[WebElement] = self.find_elements(self.elements['ForSaleCards'])
-        print(f"Listings: {len(listings)}")
-        print(f"For Sale Listings: {len(for_sale_listings)}")
 
         assert len(listings) == len(for_sale_listings), \
             f"Expected {len(for_sale_listings)} for sale listings. Received {len(listings)} instead"

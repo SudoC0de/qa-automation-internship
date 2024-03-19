@@ -5,7 +5,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from App.application import Application
 
 
-def browser_init(context):
+def browser_init(context) -> None:
     """
     :param context: Behave context
     """
@@ -18,20 +18,20 @@ def browser_init(context):
     context.app = Application(context.driver)
 
 
-def before_scenario(context, scenario):
+def before_scenario(context, scenario) -> None:
     print('\nStarted scenario: ', scenario.name)
     browser_init(context)
 
 
-def before_step(context, step):
+def before_step(context, step) -> None:
     print('\nStarted step: ', step)
 
 
-def after_step(context, step):
+def after_step(context, step) -> None:
     if step.status == 'failed':
         print('\nStep failed: ', step)
 
 
-def after_scenario(context, feature):
+def after_scenario(context, feature) -> None:
     context.driver.delete_all_cookies()
     context.driver.quit()
