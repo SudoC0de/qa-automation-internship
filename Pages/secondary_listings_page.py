@@ -1,3 +1,4 @@
+from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from Pages.base_page import Page
@@ -11,9 +12,16 @@ class SecondaryListingsPage(Page):
     }
 
     def verify_secondary_listings_opened(self) -> None:
-        self.wait_until_visible(self.elements['FilterListingsButton'])
+        count: int = 0
+
+        # Sometimes the listings are slow to load (despite being present on the DOM) so this sleep was added
+        while len(self.find_elements(self.elements['ForSaleCards'])) == 0 and count < 60:
+            count += 1
+            sleep(1)
 
         assert "secondary" in self.get_url(), "Secondary Listings Page has not opened"
+        assert len(self.find_elements(self.elements['ForSaleCards'])) > 0, \
+            f"Secondary Listings have not loaded after {count} seconds"
 
     def click_filter_button(self) -> None:
         self.wait_until_visible(self.elements['FilterListingsButton'])

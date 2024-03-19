@@ -11,4 +11,5 @@ class MainMenuPage(Page):
         self.open("https://soft.reelly.io/")
 
     def click_secondary_listings_button(self) -> None:
+        self.wait_until_visible(self.elements['SecondaryListingsButton'])
         self.click(self.elements['SecondaryListingsButton'])
