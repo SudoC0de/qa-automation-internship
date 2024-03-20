@@ -22,3 +22,4 @@ class SigninPage(Page):
         self.enter_text(email, self.elements['EmailInputBox'])
         self.enter_text(password, self.elements['PasswordInputBox'])
         self.click(self.elements['LoginButton'])
+        self.wait_until_invisible(self.elements['LoginButton'])

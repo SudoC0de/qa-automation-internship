@@ -1,7 +1,7 @@
 from behave import given, when, then
 
 
-@given('Sign-in Page has opened')
+@then('Sign-in Page has opened')
 def verify_sign_in_page_opened(context) -> None:
     context.app.signin_page.open_signin_page()
     context.app.signin_page.verify_signin_page_opened()
