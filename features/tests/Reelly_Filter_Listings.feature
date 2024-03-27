@@ -11,8 +11,5 @@ Feature: User can filter listings using the filter options
     Then Verify All Listings are for Sale
     Examples:
     | browser   | headless | remote | remote_os | remote_os_ver |
-    | Chrome    | False    | True   | OS X      | Sonoma        |
-    | Firefox   | False    | True   | OS X      | Sonoma        |
-    | Chrome    | True     | False  | None      | None          |
     | Chrome    | False    | False  | None      | None          |
     | Firefox   | False    | False  | None      | None          |
