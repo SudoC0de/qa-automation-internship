@@ -56,18 +56,15 @@ def browser_init(context, browser: str, headless: str, remote: str, remote_os: s
 
 
 def before_scenario(context, scenario) -> None:
-    #print('\nStarted scenario: ', scenario.name)
     logger.info(f'Started scenario: {scenario.name}')
 
 
 def before_step(context, step) -> None:
-    #print('\nStarted step: ', step)
     logger.info(f'Started step: {step}')
 
 
 def after_step(context, step) -> None:
     if step.status == 'failed':
-        #print('\nStep failed: ', step)
         logger.error(f'Step failed: {step}')
 
 
